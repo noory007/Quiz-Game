@@ -1,0 +1,141 @@
+:root {
+  /* Colors cheetsheet */
+  --primary-purple: #6a0dad; /* Deep Purple */
+  --secondary-purple: #9932cc; /* Medium Purple */
+  --accent-purple: #ba55d3; /* Light Purple */
+  --dark-red: #8b0000; /* Dark Red */
+  --light-red: #dc143c; /* Bright Red Accent */
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--primary-purple);
+  color: white;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(106, 13, 173, 0.5);
+  max-width: 500px;
+  width: 100%;
+  border: 3px solid var(--dark-red);
+  animation: pulse 1.5s infinite;
+}
+
+.container:hover {
+  animation: none;
+  transform: scale(1.05);
+}
+
+h1 {
+  text-align: center;
+  color: var(--accent-purple);
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px var(--dark-red);
+  margin-bottom: 20px;
+}
+
+#question {
+  font-size: 1.3em;
+  margin-bottom: 25px;
+  color: white;
+  text-align: center;
+  background-color: var(--secondary-purple);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  margin: 5px 0;
+  padding: 12px;
+  background-color: var(--secondary-purple);
+  color: white;
+  border: 2px solid var(--dark-red);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: var(--accent-purple);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--dark-red);
+}
+
+#submit {
+  margin-top: 20px;
+  background-color: var(--dark-red);
+}
+
+#submit:hover {
+  background-color: var(--light-red);
+}
+
+#progress {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--accent-purple);
+  font-weight: bold;
+}
+
+#results {
+  text-align: center;
+  background-color: rgba(106, 13, 173, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#results h2 {
+  color: var(--accent-purple);
+}
+
+#score {
+  color: var(--light-red);
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+button.selected {
+  background-color: var(--dark-red);
+  border-color: var(--accent-purple);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
