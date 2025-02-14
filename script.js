@@ -19,6 +19,10 @@ async function fetchQuestions() {
     const response = await fetch(
       "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
     );
+    // Error handling for the fetch request
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
     questions = data.results;
     totalQuestionsEl.textContent = questions.length;
@@ -32,10 +36,11 @@ async function fetchQuestions() {
 // You can see question and choices which are loaded
 function loadQuestion() {
   const question = questions[currentQuestion];
-  questionEl.innerHTML = question.question;
+  questionEl.textContent = question.question;
 
   // Clear the previous data information
-  choicesEl.innerHTML = "";
+  // Use textContent instead of innerHTML for security reasons
+  choicesEl.textContent = "";
 
   // You can see correct and incorrect answers
   const choices = [...question.incorrect_answers, question.correct_answer];
@@ -45,7 +50,8 @@ function loadQuestion() {
   // Create buttons for each choice
   choices.forEach((choice) => {
     const button = document.createElement("button");
-    button.innerHTML = choice;
+    // Use textContent instead of innerHTML for security reasons
+    button.textContent = choice;
     button.addEventListener("click", () => selectChoice(button));
     choicesEl.appendChild(button);
   });
